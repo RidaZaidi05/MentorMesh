@@ -223,7 +223,7 @@ app.post("/reset-password/:id/:token", async (req, res) => {
 
 //---------------------------- forgot password--------------------------------------------------------------
 app.get("/", (req, res) => {
-  res.send("Hello, the server is running!");
+  res.send("Hello, the server is running! ok to go...");
 });
 
 /* MONGOOSE SETUP */
