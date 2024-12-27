@@ -222,6 +222,9 @@ app.post("/reset-password/:id/:token", async (req, res) => {
 });
 
 //---------------------------- forgot password--------------------------------------------------------------
+app.get("/", (req, res) => {
+  res.send("Hello, the server is running!");
+});
 
 /* MONGOOSE SETUP */
 const PORT = process.env.PORT || 6001;
