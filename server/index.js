@@ -228,12 +228,24 @@ app.get("/", (req, res) => {
 
 /* MONGOOSE SETUP */
 const PORT = process.env.PORT || 6001;
-mongoose.connect(process.env.MONGO_URL, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-.then(() => {
-  app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
-  console.log("Connected to database:", mongoose.connection.db.databaseName);
-})
-.catch((error) => console.log(`${error} did not connect`));
+
+const connectDB = async () => {
+  if (mongoose.connection.readyState >= 1) return;
+  
+  try {
+    await mongoose.connect(process.env.MONGO_URL, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    console.log("MongoDB connected!");
+  } catch (err) {
+    console.log("Failed to connect to MongoDB", err);
+  }
+};
+
+app.use(async (req, res, next) => {
+  await connectDB();
+  next();
+});
+
+app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
