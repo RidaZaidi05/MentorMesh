@@ -1,0 +1,46 @@
+/* Message.css */
+
+.message {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.messageTop {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.messageBubble {
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 100%;
+}
+
+.messageSender {
+    font-weight:lighter;
+    margin-bottom: 2px;
+    font-size:small;
+}
+
+.messageText {
+    margin: 0;
+}
+
+.messageBottom {
+    font-size: 12px;
+}
+
+.message.own {
+    align-items: flex-end;
+}
+
+.message.own .messageBubble {
+    background-color: #18d5f2;
+    color: white;
+}
+
+.message.own .messageSender {
+    color: rgba(255, 255, 255, 0.7);
+}
